@@ -13,7 +13,6 @@ from jimgw.transforms import (
     OffsetTransform,
     ArcSineTransform,
     PowerLawTransform,
-    ParetoTransform,
 )
 
 
@@ -416,19 +415,6 @@ class PowerLawPrior(SequentialTransformPrior):
         self.alpha = alpha
         assert self.xmin < self.xmax, "xmin must be less than xmax"
         assert self.xmin > 0.0, "x must be positive"
-        if self.alpha == -1.0:
-            transform = ParetoTransform(
-                ([f"{self.parameter_names[0]}_before_transform"], self.parameter_names),
-                xmin,
-                xmax,
-            )
-        else:
-            transform = PowerLawTransform(
-                ([f"{self.parameter_names[0]}_before_transform"], self.parameter_names),
-                xmin,
-                xmax,
-                alpha,
-            )
         super().__init__(
             LogisticDistribution([f"{self.parameter_names[0]}_base"]),
             [
@@ -438,7 +424,15 @@ class PowerLawPrior(SequentialTransformPrior):
                         [f"{self.parameter_names[0]}_before_transform"],
                     )
                 ),
-                transform,
+                PowerLawTransform(
+                    (
+                        [f"{self.parameter_names[0]}_before_transform"],
+                        self.parameter_names,
+                    ),
+                    xmin,
+                    xmax,
+                    alpha,
+                ),
             ],
         )
 
