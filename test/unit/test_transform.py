@@ -288,4 +288,3 @@ class TestSingleEventTransform:
 
         # Also check that the jitted jacobian contains no NaNs
         assert not jnp.isnan(jitted_jacobian).any()
-

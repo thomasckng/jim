@@ -9,7 +9,6 @@ from jaxtyping import Array, Float, PRNGKeyArray, jaxtyped
 from jimgw.transforms import (
     BijectiveTransform,
     LogitTransform,
-    CartesianToPolarTransform,
     ScaleTransform,
     OffsetTransform,
     ArcSineTransform,
