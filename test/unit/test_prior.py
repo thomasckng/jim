@@ -202,7 +202,8 @@ class TestUnivariatePrior:
 
         # Check that the log_prob are correct in the support
         x = trace_prior_parent(p, [])[0].add_name(jnp.linspace(-10.0, 10.0, 1000)[None])
-        y = jax.vmap(p.transform)(x)
+        y = jax.vmap(p.base_prior.transform)(x)
+        y = jax.vmap(p.transform)(y)
         assert jnp.allclose(
             jax.vmap(p.log_prob)(y),
             stats.rayleigh.logpdf(y["x"], scale=sigma),
