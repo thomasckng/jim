@@ -513,7 +513,7 @@ class PowerLawTransform(BijectiveTransform):
 @jaxtyped(typechecker=typechecker)
 class CartesianToPolarTransform(BijectiveTransform):
     """
-    Periodic transformation
+    Transformation from (x, y) to (theta, r).
     Parameters
     ----------
     parameter_name : str
@@ -551,10 +551,6 @@ class CartesianToPolarTransform(BijectiveTransform):
 class PeriodicTransform(BijectiveTransform):
     """
     Periodic transformation
-    Parameters
-    ----------
-    parameter_name : str
-            The name of the parameter to be transformed.
     """
 
     def __init__(
