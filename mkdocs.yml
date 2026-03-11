@@ -1,8 +1,8 @@
 site_name: jim
 site_description: A JAX-based gravitational-wave inference toolkit
 site_author: Kaze Wong
-repo_url: https://github.com/kazewong/jim
-repo_name: kazewong/jim
+repo_url: https://github.com/thomasckng/jim
+repo_name: thomasckng/jim
 
 theme:
     name: material
